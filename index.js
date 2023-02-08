@@ -27,6 +27,8 @@ app.get('/', (req, res) => {
     res.send('Hello World!');
 });
 
+app.use('/api/v1', routes)
+
 const server = app.listen(PORT, () => {
     console.log(`Server Running: http://localhost:${PORT}`);
 });
