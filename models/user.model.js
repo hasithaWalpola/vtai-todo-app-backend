@@ -19,7 +19,15 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.INTEGER
         },
 
-    });
+    },
+        {
+            scopes: {
+                withoutPassword: {
+                    attributes: { exclude: ['password', 'token'] },
+                }
+            }
+        }
+    );
 
     return User;
 };

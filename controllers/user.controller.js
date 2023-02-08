@@ -5,7 +5,6 @@ const User = db.users;
 //Create/register a user
 exports.create = async (req, res) => {
 
-    console.log(req.body, 'req.body');
     //Hash the password before store in the database
     const salt = await bycrpt.genSalt(10);
     const hashedPassword = await bycrpt.hash(req.body.password, salt)
@@ -37,6 +36,28 @@ exports.create = async (req, res) => {
     }
 
 }
+
+//Get logged in user by user token
+exports.getLoggedUser = async (req, res) => {
+    const token = req.header('authorization')
+
+    User.scope('withoutPassword').findOne({ where: { token: token } })
+        .then(data => {
+            res.send({
+                code: 200,
+                data: data,
+                message: "logged user"
+            });
+        })
+        .catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || "Error occurred while retrieving logged user."
+            });
+        });
+
+}
+
 
 
 
