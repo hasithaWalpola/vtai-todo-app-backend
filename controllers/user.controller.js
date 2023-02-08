@@ -5,6 +5,7 @@ const User = db.users;
 //Create/register a user
 exports.create = async (req, res) => {
 
+    console.log(req.body, 'req.body');
     //Hash the password before store in the database
     const salt = await bycrpt.genSalt(10);
     const hashedPassword = await bycrpt.hash(req.body.password, salt)
@@ -20,7 +21,10 @@ exports.create = async (req, res) => {
     try {
         User.create(user)
             .then(data => {
-                res.send(data);
+                res.send({
+                    code: 200,
+                    message: "User created successfully!"
+                });
             })
             .catch(err => {
                 res.status(500).send({
