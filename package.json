@@ -1,0 +1,19 @@
+{
+  "name": "vtai-todo-app-backend",
+  "version": "1.0.0",
+  "description": "Backend for TODO application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hasithaWalpola/vtai-todo-app-backend.git"
+  },
+  "author": "Hasitha Walpola",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hasithaWalpola/vtai-todo-app-backend/issues"
+  },
+  "homepage": "https://github.com/hasithaWalpola/vtai-todo-app-backend#readme"
+}
