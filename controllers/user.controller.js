@@ -58,6 +58,29 @@ exports.getLoggedUser = async (req, res) => {
 
 }
 
+//Get all users registerd in the system
+exports.getAllUsers = async (res) => {
+
+    User.scope('withoutPassword').findAll()
+        .then(data => {
+            res.send({
+                code: 200,
+                data: data,
+                message: "users"
+            });
+        })
+        .catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || "Error occurred while retrieving users."
+            });
+        });
+
+}
+
+
+
+
 
 
 

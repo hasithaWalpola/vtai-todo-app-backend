@@ -13,7 +13,7 @@ router.post('/login', authController.login)
 //User routes
 router.post('/register', userController.create)
 router.get('/logged/user', isAuth, userController.getLoggedUser)
-
+router.get('/users', isAuth, userController.getAllUsers)
 
 
 module.exports = router
