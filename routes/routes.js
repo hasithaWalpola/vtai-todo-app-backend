@@ -19,6 +19,7 @@ router.get('/users', isAuth, userController.getAllUsers)
 //Todo routes
 router.post('/todo', isAuth, todoController.create)
 router.put('/todo/:id', isAuth, todoController.update)
+router.delete('/todo/:id', isAuth, todoController.delete)
 
 
 module.exports = router

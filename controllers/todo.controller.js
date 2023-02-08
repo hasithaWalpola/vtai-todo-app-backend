@@ -55,3 +55,25 @@ exports.update = async (req, res) => {
     }
 
 }
+
+//Delete todo item
+exports.delete = async (req, res) => {
+
+    const id = req.params.id;
+
+    try {
+        Todo.destroy({ where: { id: id } })
+            .then(data => {
+                res.send({ message: "Todo item was deleted successfully!" });
+            })
+            .catch(err => {
+                res.status(500).send({
+                    message:
+                        err.message || "Some error occurred while deleting the todo item."
+                });
+            });
+    } catch (err) {
+        res.status(400).send({ status: 400, message: err })
+    }
+
+}
