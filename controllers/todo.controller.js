@@ -77,3 +77,26 @@ exports.delete = async (req, res) => {
     }
 
 }
+
+
+//Get todo list for user
+exports.getAllTodosByUser = async (req, res) => {
+
+    const id = req.params.id;
+
+    Todo.findAll({ where: { user_id: id } })
+        .then(data => {
+            res.send({
+                code: 200,
+                data: data,
+                message: "todo items"
+            });
+        })
+        .catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while retrieving todo list."
+            });
+        });
+
+}
