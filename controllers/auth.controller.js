@@ -18,7 +18,7 @@ exports.login = async (req, res) => {
                 return res.status(400).send({ error: 'Incorrect Password' })
             }
 
-            //creating a token and save token for the particluar user
+            //creating a token and save for the particluar user
             const token = jwt.sign({ id: data.id }, process.env.TOKEN_SECRET)
             User.update({ token: token }, {
                 where: { email: req.body.email }
