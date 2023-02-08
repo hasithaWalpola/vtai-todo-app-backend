@@ -4,6 +4,9 @@ const router = require('express').Router();
 const userController = require('../controllers/user.controller')
 const authController = require('../controllers/auth.controller')
 
+//Middleware
+const isAuth = require('../middleware/isAuth')
+
 //Auth routes
 router.post('/login', authController.login)
 
