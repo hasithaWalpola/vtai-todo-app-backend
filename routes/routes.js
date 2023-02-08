@@ -25,6 +25,7 @@ router.get('/todo/user/:id', isAuth, todoController.getAllTodosByUser)
 
 //Translation routes
 router.post('/translation', isAuth, translationController.saveTranslationHistory)
+router.get('/translation/user/:id', isAuth, translationController.getTranslationsByUser)
 
 
 module.exports = router

@@ -28,3 +28,27 @@ exports.saveTranslationHistory = async (req, res) => {
     }
 
 }
+
+
+//Get Translations for user
+exports.getTranslationsByUser = async (req, res) => {
+
+    const id = req.params.id;
+
+    Translation.findAll({ where: { user_id: id } })
+        .then(data => {
+            res.send({
+                code: 200,
+                data: data,
+                message: "translation history"
+            });
+        })
+        .catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while retrieving translations."
+            });
+        });
+
+}
+
