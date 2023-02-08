@@ -4,6 +4,7 @@ const router = require('express').Router();
 const userController = require('../controllers/user.controller')
 const authController = require('../controllers/auth.controller')
 const todoController = require('../controllers/todo.controller')
+const translationController = require('../controllers/translation.controller')
 
 //Middleware
 const isAuth = require('../middleware/isAuth')
@@ -21,6 +22,10 @@ router.post('/todo', isAuth, todoController.create)
 router.put('/todo/:id', isAuth, todoController.update)
 router.delete('/todo/:id', isAuth, todoController.delete)
 router.get('/todo/user/:id', isAuth, todoController.getAllTodosByUser)
+
+//Translation routes
+router.post('/translation', isAuth, translationController.saveTranslationHistory)
+router.get('/translation/user/:id', isAuth, translationController.getTranslationsByUser)
 
 
 module.exports = router
