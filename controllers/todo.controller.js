@@ -8,7 +8,11 @@ exports.create = async (req, res) => {
         title: req.body.title,
         description: req.body.description,
         user_id: req.body.user_id,
-        status: req.body.status,
+        status: 'TODO',
+        translation: {
+            'en': req.body.title,
+        }
+
     };
 
     try {
@@ -35,9 +39,18 @@ exports.create = async (req, res) => {
 exports.update = async (req, res) => {
 
     const id = req.params.id;
+    const todo = {
+        title: req.body.title,
+        description: req.body.description,
+        user_id: req.body.user_id,
+        status: 'TODO',
+        translation: {
+            'en': req.body.title,
+        }
+    };
 
     try {
-        Todo.update(req.body, {
+        Todo.update(todo, {
             where: { id: id }
         }).then(data => {
             res.send({
