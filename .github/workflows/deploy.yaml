@@ -12,7 +12,7 @@ jobs:
       - id: 'auth'
         uses: 'google-github-actions/auth@v1'
         with:
-          service_account: 'vtai-todo-app@todo-backend-376718.iam.gserviceaccount.com'
+          credentials: ${{ secrets.gcp_credentials }}
 
       - id: 'deploy'
         uses: 'google-github-actions/deploy-appengine@v1'
