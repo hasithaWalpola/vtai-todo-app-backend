@@ -8,7 +8,15 @@ jobs:
     name: GAE Deploy
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: google-github-actions/deploy-appengine@main
+
+      - id: 'auth'
+        uses: 'google-github-actions/auth@v1'
         with:
-          credentials: ${{ secrets.gcp_credentials }}
+          service_account: 'vtai-todo-app@todo-backend-376718.iam.gserviceaccount.com'
+
+      - id: 'deploy'
+        uses: 'google-github-actions/deploy-appengine@v1'
+
+      # Example of using the output
+      - id: 'test'
+        run: 'curl "${{ steps.deploy.outputs.url }}"'
