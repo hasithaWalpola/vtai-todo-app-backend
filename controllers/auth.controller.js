@@ -23,7 +23,7 @@ exports.login = async (req, res) => {
             User.update({ token: token }, {
                 where: { email: req.body.email }
             }).then(data => {
-                console.log(data, 'userCheck')
+                //console.log(data, 'userCheck')
                 res.header('auth-Token', token)
                     .send({ code: 200, token: token, message: 'Login Sucessfull' })
             })

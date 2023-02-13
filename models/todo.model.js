@@ -12,6 +12,9 @@ module.exports = (sequelize, Sequelize) => {
         status: {
             type: Sequelize.STRING
         },
+        translation: {
+            type: Sequelize.JSONB
+        }
     });
 
     return Todo;
