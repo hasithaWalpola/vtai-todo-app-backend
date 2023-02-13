@@ -14,7 +14,7 @@ exports.create = async (req, res) => {
         last_name: req.body.last_name,
         email: req.body.email,
         password: hashedPassword,
-        role: req.body.role != '' ? 1 : 2,
+        role: req.body.role,
     };
 
     try {
@@ -59,7 +59,7 @@ exports.getLoggedUser = async (req, res) => {
 }
 
 //Get all users registerd in the system
-exports.getAllUsers = async (res) => {
+exports.getAllUsers = async (req, res) => {
 
     User.scope('withoutPassword').findAll()
         .then(data => {
@@ -70,6 +70,7 @@ exports.getAllUsers = async (res) => {
             });
         })
         .catch(err => {
+            console.log(err, 'err');
             res.status(500).send({
                 message:
                     err.message || "Error occurred while retrieving users."
