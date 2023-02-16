@@ -68,7 +68,7 @@ The following implementation, and architectural decisions were taken throughout 
 
 ## ✅ Deployemnt
 
-[Deployement Document]("docs/resources/VTAI%20-%20Todo%20App%20Deployment.pdf")
+[Deployement Document]("https://github.com/hasithaWalpola/vtai-todo-app-backend/blob/dev/docs/resources/VTAI_Todo_App.pdf")
 
 - Application deployed to the Google Cloud using Github Actions
 - Application deployed automatically when push to main branch(CI/CD)
